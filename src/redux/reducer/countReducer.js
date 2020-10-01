@@ -28,9 +28,11 @@ const countReducer = (state = initialState, action) => {
       return { ...state };
 
     case "DECREMENT":
-      state.count--;
-      state.boxList.splice(state.boxList.length - 1, 1);
-      return { ...state };
+      if (state.count > 0) {
+        state.count--;
+        state.boxList.splice(state.boxList.length - 1, 1);
+        return { ...state };
+      }
 
     case "RESET":
       state.count = 0;
